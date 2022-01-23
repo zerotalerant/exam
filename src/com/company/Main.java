@@ -5,18 +5,23 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите набор символов: ");
-        String pldrm = scanner.nextLine();
-        boolean palindrom = true;
-        for (int i = 0; i <= pldrm.length() - 1; i++) {
-            for (int j = pldrm.length() - 1; j >= 0; j--) {
-                if (pldrm.charAt(i) != pldrm.charAt(j)) {
-                    palindrom = false;
-                } else {
-                    palindrom = true;
-                }
-            }
+        System.out.print("Введите количество домов на улице: ");
+        int size = scanner.nextInt();
+        System.out.println("Заполните улицу номерами домов, в вашем случае до : " + size);
+        int array[] = new int[size];
+        int chet = 0;
+        int nechet = 0;
+        for (int i = 0; i < size; i++) {
+            array[i] = scanner.nextInt();
+
+            if (array[i] % 2 == 0) {
+                chet = chet + array[i];
+            } else
+                nechet = nechet + array[i];
         }
-        System.out.println(palindrom);
+        if (chet > nechet) {
+            System.out.println("В чётных домах больше жителей!");
+        } else
+            System.out.println("В нечётных домах больше жителей!");
     }
 }
